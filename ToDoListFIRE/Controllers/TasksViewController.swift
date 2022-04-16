@@ -41,6 +41,7 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let alertController = UIAlertController(title: "New Task", message: "Add new task", preferredStyle: .alert)
         alertController.addTextField()
         let save = UIAlertAction(title: "Save", style: .default) { [weak self] _ in
+            
             guard let textField = alertController.textFields?.first, textField.text != "" else { return }
             let task = Task(title: textField.text!, userId: (self?.user.uid)!)
             let taskRef = self?.ref.child(task.title.lowercased())
